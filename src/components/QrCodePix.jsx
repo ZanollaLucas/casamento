@@ -18,7 +18,7 @@ const QrCodePix = ({ qrCode, nomeComprador, setNomeComprador, confirmarPagamento
           style={{ padding: "8px", fontSize: "16px", width: "80%", marginBottom: "10px" }}
         />
         <button onClick={confirmarPagamento} style={{ padding: "10px 20px", fontSize: "16px", cursor: "pointer" }}>
-          Confirmar Pagamento
+          Confirmar Pix Realizado
         </button>
       </div>
     </div>
