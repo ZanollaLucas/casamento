@@ -1,14 +1,74 @@
-
-.container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  width: 100vw
+.foto-moldura {
+  max-width: 100%;
+  height: auto;
+  margin-top: 2%;
+  /* Moldura com borda dupla e sombreada */
+  border: 10px solid #8B5E3C; /* Cor de madeira */
+  border-radius: 15px; /* Bordas arredondadas */
+  padding: 15px; /* Espaçamento interno para dar a sensação de profundidade */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3), inset 0px 0px 10px rgba(255, 255, 255, 0.2); /* Sombras internas e externas para profundidade */
+  background-color: #f4f1ec; /* Cor de fundo da moldura (para contrastar com a borda) */
+  position: relative;
 }
 
+.foto-moldura::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.3)); /* Gradiente para dar um efeito de brilho */
+  border-radius: 15px;
+  z-index: -1;
+}
+
+
+.img-container {
+  flex: 1 1 10%;
+  text-align: center;
+}
+
+.imagem-casal {
+  max-width: 10vw;  /* Limita a largura da imagem a 10% da largura da tela */
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+
+/* Garante que as imagens ocupem no máximo 10% da largura da tela (10vw) */
+.container img {
+  max-width: 10vw; /* Limita a largura das imagens a 10% da largura da tela */
+  width: 100%; /* A imagem vai ocupar 100% da largura do contêiner */
+  height: auto; /* Mantém a proporção da imagem */
+  object-fit: contain; /* Garante que a imagem será redimensionada sem perder proporção */
+}
+
+/* A lista central ocupa 80% da largura da tela (80vw) */
 .card-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
+  gap: 2vw; /* Espaçamento entre os itens ajustado para 2% da largura da tela */
+  flex: 1 1 100vw; /* A lista ocupa 80% da largura da tela */
+}
+
+@media (max-width: 10vw) {
+  .container img {
+    max-width: 10vw; /* Imagens ocupam no máximo 10% da largura da tela em telas médias */
+  }
+
+  .card-grid {
+    max-width: 90vw; /* A lista ocupa 90% da tela em dispositivos menores */
+  }
+}
+
+@media (max-width: 60vw) {
+  .container img {
+    max-width: 10vw; /* Imagens ocupam no máximo 10% da tela em dispositivos muito pequenos */
+  }
+
+  .card-grid {
+    max-width: 90vw; /* A lista ocupa 90% da tela em dispositivos muito pequenos */
+  }
 }

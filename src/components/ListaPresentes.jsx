@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import QRCode from "react-qr-code"; // Biblioteca para gerar QR Code
 import BrCode from "../util/BrCode"; // Importando o BrCode local
 import PresenteItem from "./PresenteItem";
+import "./ui/ListaPresentes.css";
 
 const ListaPresentes = () => {
   const [presentes, setPresentes] = useState([]);
@@ -79,12 +80,12 @@ const ListaPresentes = () => {
   };
 
   return (
-    <div>
+    <div className="lista-presentes">
       <h2>Lista de Presentes</h2>
       {presentes.length === 0 ? (
-        <p>Carregando presentes...</p>
+        <p className="loading">Carregando presentes...</p>
       ) : (
-        <ul style={{ listStyle: "none", padding: 0 }}>
+        <div  className="grid">
           {presentes.map((presente) => (
             <PresenteItem
               key={presente.id}
@@ -95,9 +96,8 @@ const ListaPresentes = () => {
               comprar={gerarQRCode}
             />
           ))}
-        </ul>
+        </div>
       )}
-
       {comprando && (
         <div style={{ marginTop: "20px" }}>
           <h3>QR Code para pagamento do presente</h3>
@@ -131,5 +131,6 @@ const ListaPresentes = () => {
     </div>
   );
 };
+
 
 export default ListaPresentes;
